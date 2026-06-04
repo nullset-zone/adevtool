@@ -1,5 +1,6 @@
 # GuardTalk flags must load before product-common so we can skip telephony inherits.
-$(call inherit-product-if-exists, vendor/guardtalk/device/tokay/guardtalk-flags.mk)
+# Use include (not inherit-product) so GUARDTALK_RADIO_EXCISED is set before ifneq below.
+-include vendor/guardtalk/device/tokay/guardtalk-flags.mk
 
 ifneq ($(GUARDTALK_RADIO_EXCISED),)
 $(call inherit-product, vendor/guardtalk/device/tokay/product-common-excised.mk)
